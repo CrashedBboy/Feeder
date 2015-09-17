@@ -3,11 +3,11 @@
 #include "DS1302.h"
 
 Servo myservo;
-const int kCePin   = 5;  // Chip Enable
-const int kIoPin   = 6;  // Input/Output
-const int kSclkPin = 7;  // Serial Clock
-const int servoPin = 9;  // Servo
-const int tip120pin = 8; // transistor
+const int kCePin   = 2;  // Chip Enable
+const int kIoPin   = 3;  // Input/Output
+const int kSclkPin = 4;  // Serial Clock
+const int servoPin = 5;  // Servo
+const int tip120pin = 6; // transistor
 DS1302 rtc(kCePin, kIoPin, kSclkPin);
 
 void setup() {
@@ -18,6 +18,7 @@ void setup() {
 }
 
 void loop() {
+  printTime();
   Time counter = rtc.time();
   if (counter.sec == 0 && counter.min == 0 ) {
     feed(1);  
